@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.example.diceroller.Dice.Companion.createCubeDice
 
 class MainActivity : AppCompatActivity() {
     val diceImages = listOf(
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         R.drawable.dice_5,
         R.drawable.dice_6,
     )
-    val dice = Dice.createCubeDice()
+    val dice = createCubeDice()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +40,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-/**
- * Dice with a fixed number of sides.
- */
-class Dice(private val numSides: Int) {
-    companion object {
-        fun createCubeDice(): Dice{
-            return Dice(6)
-        }
-    }
-
-    /**
-     * Do a random dice roll and return the result.
-     */
-    fun roll(): Int {
-        return (1..numSides).random()
-    }
-}
